@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -15,15 +16,16 @@ int main(int argc, char *argv[]) {
     vector<string> commands; // stores all commands from the source code
     char currentCharacter;
     string currentCommand; // holds currect command before pushing it to "commands"
-    fin >> noskipws; // do not skip whitespaces
     bool qoute = false; // this indicates wheter currentCharacter is between qoutes or not (strings should only be in double qoutes.)
+    const vector<char> skipChars = {' ', '\n'};
+    fin >> noskipws; // do not skip whitespaces
     while (fin >> currentCharacter) {
         if (currentCharacter == ';') {
             commands.push_back(currentCommand);
             currentCommand.clear();
         } else {
             // only push current character if it is not a whitespace or is betweean qoutes
-            if (currentCharacter != ' ') {
+            if (find(skipChars.begin(), skipChars.end(), currentCharacter) == skipChars.end()) {
                 currentCommand.push_back(currentCharacter);
             } else if (qoute) {
                 currentCommand.push_back(currentCharacter);
@@ -32,6 +34,9 @@ int main(int argc, char *argv[]) {
             if (currentCharacter == '"') qoute = !qoute;
         }
     }
+
+    // output file is in argv[2]
+    ofstream fout = ofstream(argv[2]);
 
     // proccesses command one by one and calls apropriate function from "hmlogCommands.cpp"
     for (string command : commands) {
@@ -56,11 +61,10 @@ int main(int argc, char *argv[]) {
             if (command[i] == ')') break;
         }
 
-        // output file is in argv[2]
-        ofstream fout = ofstream(argv[2]);
+
 
         if (commandPtr[commandName]) {
-            fout << commandPtr[commandName](args) << endl;
+            fout << commandPtr[commandName](args);
         } else {
             cerr << "Command " << commandName << " not found. Terminating." << endl;
         }
