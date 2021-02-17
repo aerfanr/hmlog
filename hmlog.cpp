@@ -56,10 +56,13 @@ int main(int argc, char *argv[]) {
             if (command[i] == ')') break;
         }
 
+        // output file is in argv[2]
+        ofstream fout = ofstream(argv[2]);
+
         if (commandPtr[commandName]) {
-            cout << commandPtr[commandName](args) << endl;
+            fout << commandPtr[commandName](args) << endl;
         } else {
-            cout << "Command " << commandName << " not found. Terminating." << endl;
+            cerr << "Command " << commandName << " not found. Terminating." << endl;
         }
     }
 
