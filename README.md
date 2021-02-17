@@ -16,6 +16,7 @@ And here is a list of features to be implemented:
 First, compile the compiler (I use g++ for this):
 
 ``` g++ hmlog.cpp -o hmlog ```
+
 Then compile your hmlog code and copy the output to a proccessor in Mindustry:
 
 ``` hmlog MyAwesomeAI.hmlog ```
