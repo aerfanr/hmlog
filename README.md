@@ -4,6 +4,7 @@ hmlog (high level mlog) is a programming language with c-like syntax and generat
 ## Features
 This is currently in early development stage. Here is a list of implemented features:
 * pout commant (print and flush)
+* some of basic Mindustry commands (read)
 
 And here is a list of features to be implemented:
 
@@ -19,6 +20,6 @@ First, compile the compiler (I use g++ for this):
 
 ``` g++ hmlog.cpp -o hmlog ```
 
-Then compile your hmlog code and copy the output to a proccessor in Mindustry:
+Then compile your hmlog code and copy contents of output file to a processor in Mindustry.
 
 ``` hmlog MyAwesomeAI.hmlog ```
