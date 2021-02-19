@@ -17,14 +17,13 @@ string pout(vector<string> args) {
     return mlog;
 }
 
-// read reads data from "memoryCell" at "position" to "result"
+// read reads data from "memoryCell" at "position" to "ASSIGNCON"
 string read(vector<string> args) {
     string memoryCell = args[0];
     string position = args[1];
-    string result = args[2];
 
     string mlog;
-    mlog += "read " + result + " " + memoryCell + " " + position + '\n';
+    mlog += "read ASSIGNCON " + memoryCell + " " + position + '\n';
 
     return mlog;
 }
