@@ -29,9 +29,20 @@ string read(vector<string> args) {
     return mlog;
 }
 
+string set(vector<string> args) {
+    string variableName = args[0];
+    string value = args[1];
+
+    string mlog;
+    mlog += "set " + variableName + " " + value + '\n';
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
     {"pout", pout},
-    {"read", read}
+    {"read", read},
+    {"set", set}
 };
