@@ -51,11 +51,26 @@ string set(vector<string> args) {
     return mlog;
 }
 
+// gets drawing type and creates aprotpriate draw command
+string draw(vector<string> args) {
+    string type = args[0];
+
+    string mlog;
+    mlog += "draw";
+    for (string s : args) {
+        mlog += ' ' + s;
+    }
+    mlog += '\n';
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
     {"pout", pout},
     {"read", read},
     {"write", write},
+    {"draw", draw},
     {"set", set}
 };
