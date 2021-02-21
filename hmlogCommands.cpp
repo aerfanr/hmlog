@@ -75,6 +75,16 @@ string drawFlush(vector<string> args) {
     return mlog;
 }
 
+// gets "n"th link and returns the result to ASSIGNCON
+string getLink(vector<string> args) {
+    string n = args[0];
+
+    string mlog;
+    mlog += "getlink ASSIGNCON " + n + '\n';
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
@@ -83,5 +93,6 @@ map<string, fnPtr> commandPtr = {
     {"write", write},
     {"draw", draw},
     {"drawFlush", drawFlush},
+    {"getLink", getLink},
     {"set", set}
 };
