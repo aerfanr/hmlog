@@ -65,6 +65,16 @@ string draw(vector<string> args) {
     return mlog;
 }
 
+// flushes draw buffer to "display"
+string drawFlush(vector<string> args) {
+    string display = args[0];
+
+    string mlog;
+    mlog += "drawflush " + display + '\n';
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
@@ -72,5 +82,6 @@ map<string, fnPtr> commandPtr = {
     {"read", read},
     {"write", write},
     {"draw", draw},
+    {"drawFlush", drawFlush},
     {"set", set}
 };
