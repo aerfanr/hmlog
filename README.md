@@ -4,7 +4,7 @@ hmlog (high level mlog) is a programming language with c-like syntax and generat
 ## Features
 This is currently in early development stage. Here is a list of implemented features:
 * pout commant (print and flush)
-* some of basic mlog commands (read and set)
+* some of basic mlog commands (read, write, draw, drawflush, getlink and set)
 
 And here is a list of features to be implemented:
 
