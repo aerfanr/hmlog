@@ -85,6 +85,18 @@ string getLink(vector<string> args) {
     return mlog;
 }
 
+// sets "property" of "block" to given arguments
+string control(vector<string> args) {
+    string mlog;
+    mlog += "control";
+    for (string s : args) {
+        mlog += ' ' + s;
+    }
+    mlog += '\n';
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
@@ -94,5 +106,6 @@ map<string, fnPtr> commandPtr = {
     {"draw", draw},
     {"drawFlush", drawFlush},
     {"getLink", getLink},
+    {"control", control},
     {"set", set}
 };
