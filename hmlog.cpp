@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "hmlogCommands.cpp"
+#include "hmlog.hpp"
 
 using namespace std;
 

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <map>
-#include <string>
-#include <vector>
+#include "hmlogCommands.hpp"
 
 using namespace std;
 
