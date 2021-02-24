@@ -15,3 +15,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: make
       run: make
+    - uses: djnicholson/release-action@v2.11
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        release-name: 'Latest rolling build'
+        tag-name: 'v1.3-alpha'
+        asset-name: 'hmlog'
+        file: 'build/hmlog'
