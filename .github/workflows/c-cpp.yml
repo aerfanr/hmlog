@@ -19,6 +19,19 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         release-name: 'Latest rolling build'
-        tag-name: 'v1.3-alpha'
-        asset-name: 'hmlog'
+        asset-name: 'hmlog-linux'
         file: 'build/hmlog'
+    
+    - name: Install MinGW
+      uses: egor-tensin/setup-mingw@v2
+    - name: Clean build directory
+      run: rm -rf build
+    - name: Build for windows
+      run: mingw64-make
+    - name: release for windows
+      uses: djnicholson/release-action@v2.11
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        release-name: 'Latest rolling build'
+        asset-name: 'hmlog-windows.exe'
+        file: 'build/hmlog.exe'
