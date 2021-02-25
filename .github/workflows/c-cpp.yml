@@ -23,7 +23,7 @@ jobs:
         file: './build/hmlog'
     
     - name: Install MinGW
-      uses: egor-tensin/setup-mingw@v2
+      run: sudo apt install mingw-w64 -y
     - name: Clean build directory
       run: rm -rf build
     - name: Build for windows
