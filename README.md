@@ -15,11 +15,27 @@ And here is a list of features to be implemented:
 * functions
 * module support
 
-## Usage
-First, compile the compiler (I use g++ for this):
+## Download
+You can download Linux and Widnows executable versions from [releases page](https://github.com/aerfanr/hmlog/releases) in this repository.
 
-``` g++ hmlog.cpp -o hmlog ```
+## Building
+To build on Linux, clone the repository:
 
-Then compile your hmlog code and copy contents of output file to a processor in Mindustry.
+```
+git clone https://github.com/aerfanr/hmlog
+```
 
-``` hmlog MyAwesomeAI.hmlog ```
+Then run make to build the executable:
+
+```
+cd hmlog
+make
+```
+
+Finally you can install the program with:
+
+```
+sudo make install
+```
+
+If you want to build on windows, you probably need to use MinGW for windows or WSL. But I have no idea how you could actually build the software.
