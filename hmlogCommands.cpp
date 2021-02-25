@@ -2,6 +2,11 @@
 
 using namespace std;
 
+// runMlog does nothing. just returns the exact string as compiled mlog.
+string runMlog(vector<string> args) {
+    return args[0];
+}
+
 // pout prints string "s" and flushes the print buffer to "messageBlock"
 string pout(vector<string> args) {
     string s = args[0];

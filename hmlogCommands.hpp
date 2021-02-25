@@ -7,7 +7,10 @@
 
 using namespace std;
 
+string runMlog(vector<string> args);
+
 string pout(vector<string> args);
+
 string read(vector<string> args);
 string write(vector<string> args);
 string draw(vector<string> args);
