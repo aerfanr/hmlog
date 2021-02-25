@@ -36,4 +36,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         release-name: 'Latest rolling build'
         asset-name: 'hmlog-windows.exe'
-        file: './build/hmlog.exe'
+        file: './build/hmlog'
