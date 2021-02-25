@@ -27,7 +27,7 @@ jobs:
     - name: Clean build directory
       run: rm -rf build
     - name: Build for windows
-      run: mingw64-make
+      run: make CXX=x86_64-w64-mingw32-g++
     - name: release for windows
       uses: djnicholson/release-action@v2.11
       with:
