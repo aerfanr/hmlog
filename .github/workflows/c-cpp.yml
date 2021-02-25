@@ -27,7 +27,8 @@ jobs:
     - name: Clean build directory
       run: rm -rf build
     - name: Build for windows
-      run: make CXX=x86_64-w64-mingw32-g++
+      run: make CXX=x86_64-w64-mingw32-g++ 
+    - name: List build directory
       run: ls ./build
     - name: release for windows
       uses: djnicholson/release-action@v2.11
