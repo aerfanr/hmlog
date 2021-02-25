@@ -99,6 +99,22 @@ string control(vector<string> args) {
     return mlog;
 }
 
+// radar returns first enemey sorted by "sorting" in "order" order 
+// from "turret" wich is "type1" and "type2" and "type3"
+string radar(vector<string> args) {
+    string turret = args[0];
+    string type1 = args[1];
+    string type2 = args[2];
+    string type3 = args[3];
+    string sorting = args[4];
+    string order = args[5];
+
+    string mlog;
+    mlog += "radar " + type1 + ' ' + type2 + ' ' + type3 + ' ' + sorting + ' ' + turret + ' ' + order + " ASSIGNCON\n";
+
+   return mlog; 
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
@@ -110,5 +126,6 @@ map<string, fnPtr> commandPtr = {
     {"drawFlush", drawFlush},
     {"getLink", getLink},
     {"control", control},
-    {"set", set}
+    {"set", set},
+    {"radar", radar}
 };

@@ -18,6 +18,7 @@ string drawFlush(vector<string> args);
 string getLink(vector<string> args);
 string control(vector<string> args);
 string set(vector<string> args);
+string radar(vector<string> args);
 
 typedef string (*fnPtr)(vector<string>);
 extern map<string, fnPtr> commandPtr;
