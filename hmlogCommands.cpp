@@ -102,6 +102,7 @@ string control(vector<string> args) {
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
+    {"runMlog", runMlog},
     {"pout", pout},
     {"read", read},
     {"write", write},
