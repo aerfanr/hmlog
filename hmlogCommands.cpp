@@ -121,6 +121,17 @@ string radar(vector<string> args) {
    return mlog; 
 }
 
+// returns "property" from "block" to ASSIGNCON
+string sensor(vector<string> args) {
+    string property = args[0];
+    string block = args[1];
+
+    string mlog;
+    mlog = "sensor ASSIGNCON " + block + ' ' + property + '\n';
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
@@ -133,5 +144,6 @@ map<string, fnPtr> commandPtr = {
     {"getLink", getLink},
     {"control", control},
     {"set", set},
-    {"radar", radar}
+    {"radar", radar},
+    {"sensor", sensor}
 };
