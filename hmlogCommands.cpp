@@ -4,7 +4,13 @@ using namespace std;
 
 // runMlog does nothing. just returns the exact string as compiled mlog.
 string runMlog(vector<string> args) {
-    return args[0];
+    string mlog;
+    for (string s : args) {
+        mlog += s + ' ';
+    }
+    mlog.push_back('\n');
+
+    return mlog;
 }
 
 // pout prints string "s" and flushes the print buffer to "messageBlock"
