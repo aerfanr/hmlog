@@ -132,6 +132,18 @@ string sensor(vector<string> args) {
     return mlog;
 }
 
+// performs a single operation from type "type" on "parm1" and "parm2" and returns the result to ASSIGNCON
+string op(vector<string> args) {
+    string type = args[0];
+    string parm1 = args[1];
+    string parm2 = (args.size() >= 3) ? args[2] : "";
+
+    string mlog;
+    mlog = "op " + type + " ASSIGNCON " + parm1 + ' ' + parm2 + '\n';
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
@@ -145,5 +157,6 @@ map<string, fnPtr> commandPtr = {
     {"control", control},
     {"set", set},
     {"radar", radar},
-    {"sensor", sensor}
+    {"sensor", sensor},
+    {"op", op}
 };
