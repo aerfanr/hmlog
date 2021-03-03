@@ -21,6 +21,7 @@ string set(vector<string> args);
 string radar(vector<string> args);
 string sensor(vector<string> args);
 string op(vector<string> args);
+string end(vector<string> end);
 
 typedef string (*fnPtr)(vector<string>);
 extern map<string, fnPtr> commandPtr;

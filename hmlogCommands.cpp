@@ -144,6 +144,14 @@ string op(vector<string> args) {
     return mlog;
 }
 
+// end
+string end(vector<string> args) {
+    string mlog;
+    mlog += "end\n";
+
+    return mlog;
+}
+
 typedef string (*fnPtr)(vector<string>);
 
 map<string, fnPtr> commandPtr = {
@@ -158,5 +166,6 @@ map<string, fnPtr> commandPtr = {
     {"set", set},
     {"radar", radar},
     {"sensor", sensor},
-    {"op", op}
+    {"op", op},
+    {"end", end}
 };
