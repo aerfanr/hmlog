@@ -27,7 +27,7 @@ jobs:
     - name: Clean build directory
       run: rm -rf build
     - name: Build for windows
-      run: make CXX=x86_64-w64-mingw32-g++ 
+      run: make CXX=x86_64-w64-mingw32-g++ BUILDTARGET=hmlog.exe
     - name: List build directory
       run: ls ./build
     - name: release for windows
@@ -36,4 +36,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         release-name: 'Latest rolling build'
         asset-name: 'hmlog-windows.exe'
-        file: './build/hmlog'
+        file: './build/hmlog.exe'
