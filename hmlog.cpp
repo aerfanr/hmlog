@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <fstream>
 #include <iostream>
 #include <vector>
 
@@ -39,15 +38,16 @@ string compileCommand(string commandName, vector<string> arguments) {
     if (commandPtr[commandName]) {
         return commandPtr[commandName](arguments);
     } else {
-        cout << commandName << " not found. Terminating.";
+        cerr << commandName << " not found. Terminating.";
         return "";
     }
 }
 
 int main(int argc, char *argv[]) {
-    // source file is in argv[1]
-    // this creates a file input stream and reads the source code in hmlog from source file
-    ifstream fin = ifstream(argv[1]); // file input stream
+    // source file is in argv[1], output file is in argv[2]
+    // redirect input file to stdin and stdout to to output file
+    freopen(argv[1], "r", stdin);
+    freopen(argv[2], "w", stdout);
 
     // reads file character by character and pushes each command (seperated by ';') into "commands" vector
     vector<string> commands; // stores all commands from the source code
@@ -55,8 +55,8 @@ int main(int argc, char *argv[]) {
     string currentCommand; // holds currect command before pushing it to "commands"
     bool qoute = false; // this indicates wheter currentCharacter is between qoutes or not (strings should only be in double qoutes.)
     const vector<char> skipChars = {' ', '\n'};
-    fin >> noskipws; // do not skip whitespaces
-    while (fin >> currentCharacter) {
+    cin >> noskipws; // do not skip whitespaces
+    while (cin >> currentCharacter) {
         if (currentCharacter == ';') {
             commands.push_back(currentCommand);
             currentCommand.clear();
@@ -71,8 +71,8 @@ int main(int argc, char *argv[]) {
             if (currentCharacter == '"') qoute = !qoute;
         }
     }
-    // output file is in argv[2]
-    ofstream fout = ofstream(argv[2]);
+    
+    string output;
 
     // proccesses command one by one and calls apropriate function from "hmlogCommands.cpp"
     for (string command : commands) {
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
                 // compiles the right part of the assignment like a normall call
                 pair<string, vector<string>> commandPair = readCommand(command.substr(i + 1));
                 string compiled = compileCommand(commandPair.first, commandPair.second);
-                if (compiled.size()) fout << compiled;
+                if (compiled.size()) output += compiled;
                 else return 1;
 
                 // gets the variable name on the left of the assignment
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
                 // compiles set operation of the assignment. sets assignName to "ASSIGNCON".
                 // "ASSIGNCON" is a temporary variable used for assignments.
                 compiled = compileCommand("set", {assignName, "ASSIGNCON"});
-                if (compiled.size()) fout << compiled;
+                if (compiled.size()) output += compiled;
                 else return 1;
 
                 break;
@@ -105,13 +105,15 @@ int main(int argc, char *argv[]) {
                 // reads the command and compiles it. then prints the result to the output file
                 pair<string, vector<string>> commandPair = readCommand(command);
                 string compiled = compileCommand(commandPair.first, commandPair.second);
-                if (compiled.size()) fout << compiled;
+                if (compiled.size()) output += compiled;
                 else return 1;
 
                 break;
             }
         }
     }
+
+    cout << output;
 
     return 0;
 }
